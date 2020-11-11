@@ -27,8 +27,12 @@ class GravityCircleFlutter extends StatefulWidget {
 }
 
 class _GravityCircleFlutterState extends State<GravityCircleFlutter> {
+  Offset tapDownPosition = Offset(0.0, 0.0);
+
   void onTapDownDetector(Offset globalPosition) {
-    print('Tap in screen area: $globalPosition');
+    setState(() {
+      tapDownPosition = globalPosition;
+    });
   }
 
   @override
@@ -39,7 +43,9 @@ class _GravityCircleFlutterState extends State<GravityCircleFlutter> {
           onTapDownDetector(details.globalPosition);
         },
         child: CustomPaint(
-          painter: CirclePainter(),
+          painter: CirclePainter(
+            circlePosition: tapDownPosition,
+          ),
           child: Center(),
         ),
       ),

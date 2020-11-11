@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
 
 class CirclePainter extends CustomPainter {
+  Offset centerPosition = Offset(0.0, 0.0);
+
+  CirclePainter({Offset circlePosition}) {
+    this.centerPosition = circlePosition;
+  }
+
   @override
   void paint(Canvas canvas, Size size) {
     double radius = 10.0;
@@ -10,11 +16,13 @@ class CirclePainter extends CustomPainter {
     paint.color = Colors.yellowAccent;
     paint.strokeWidth = 5;
     canvas.drawColor(Colors.black, BlendMode.color);
-    canvas.drawCircle(Offset(x, y), radius, paint);
+    canvas.drawCircle(this.centerPosition, radius, paint);
   }
 
   @override
-  bool shouldRepaint(CirclePainter oldDelegate) => false;
+  bool shouldRepaint(CirclePainter oldDelegate) {
+    return oldDelegate.centerPosition != centerPosition;
+  }
 
   @override
   bool shouldRebuildSemantics(CirclePainter oldDelegate) => false;
