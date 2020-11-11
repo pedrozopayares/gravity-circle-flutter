@@ -1,3 +1,4 @@
+import 'CirclePainter.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -29,7 +30,10 @@ class _GravityCircleFlutterState extends State<GravityCircleFlutter> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: CustomPaint(),
+      child: CustomPaint(
+        painter: CirclePainter(),
+        child: Center(),
+      ),
     );
   }
 }
