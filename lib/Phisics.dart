@@ -1,3 +1,3 @@
 class Phisics {
-  final gravity = 9.7;
+  static final gravity = 9.7;
 }

@@ -44,7 +44,7 @@ class _GravityCircleFlutterState extends State<GravityCircleFlutter> {
         },
         child: CustomPaint(
           painter: CirclePainter(
-            circlePosition: tapDownPosition,
+            tapPosition: tapDownPosition,
           ),
           child: Center(),
         ),
