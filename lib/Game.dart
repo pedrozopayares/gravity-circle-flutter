@@ -1,17 +1,22 @@
 import 'Physics.dart';
 import 'Circle.dart';
 import 'package:flutter/material.dart';
+import 'dart:math';
 
 class Game {
-  Phisics phisics = new Phisics();
   List<Circle> circles = [];
+
+  void freeFall(Circle circle) {
+    DateTime actualTime = new DateTime.now();
+    Duration elapsedTime = actualTime.difference(circle.getInitialTime());
+    circle.setPositionY(circle.getPositionY() +
+        (Physics.gravity * pow(elapsedTime.inMilliseconds, 2)) * 0.5);
+  }
 
   void update() {
     if (circles.length != 0) {
       for (int i = 0; i < circles.length; i++) {
-        if (circles[i].getPositionY() <= 710) {
-          circles[i].setPositionY(circles[i].getPositionY() + 1);
-        }
+        freeFall(circles[i]);
       }
     }
   }
