@@ -1,17 +1,21 @@
 import 'package:flutter/material.dart';
 
 class Circle {
-  Offset centerPosition = Offset(0.0, 0.0);
+  double positionX = 0.0;
+  double positionY = 0.0;
   double radius = 10.0;
   double weight = 0.0;
   double friction = 0.0;
   Color color = Colors.yellowAccent;
   double strokeWidth = 5;
 
-  Circle(this.centerPosition);
+  Circle(Offset centerPosition) {
+    this.positionX = centerPosition.dx;
+    this.positionY = centerPosition.dy;
+  }
 
   Offset getCenterPosition() {
-    return this.centerPosition;
+    return new Offset(positionX, positionY);
   }
 
   double getRadius() {
@@ -24,5 +28,13 @@ class Circle {
 
   double getStrokeWidth() {
     return this.strokeWidth;
+  }
+
+  double getPositionY() {
+    return this.positionY;
+  }
+
+  void setPositionY(double y) {
+    this.positionY = y;
   }
 }
